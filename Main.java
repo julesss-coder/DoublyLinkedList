@@ -1,26 +1,26 @@
 /*
 TODOS
-
 - [x] append
-- [ ] add(index)
+- [x] add(index)
 - [ ] printList
 - [ ] printListReverse
 - [ ] listLength
 - [ ] seekList(index)
 - [ ] seekListReverse(index)
 - [ ] delete(index)
+    - [ ] Decrement nodeCounter upon removing a node
 
 - [ ] Implement iterator
 - [ ] Add access modifiers to classes, fields and methods
 - [ ] Add static
 
+QUESTIONS:
+- When do I have to use `this` inside a class, and when not?
+- Should `head` and `tail` in `DoublyLinkedList` be private?
  */
 public class Main {
 
     public static void main(String[] args) {
-
-//        ListNode<Integer> node1 = new ListNode<>(1);
-//        ListNode<Integer> node2 = new ListNode<>(2);
         DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<>();
 
         doublyLinkedList.append(1);
@@ -31,15 +31,14 @@ public class Main {
         doublyLinkedList.append(6);
 
         int listLength = doublyLinkedList.listLength();
-        System.out.println(listLength);
         doublyLinkedList.add(0, 0);
 
-        // Test add() for regular cases
-
-
-//        while (node !=  null) {
-//            System.out.println(node.value);
-//            node = node.next;
-//        }
+        // Print list
+        System.out.println("Doubly linked list: ");
+        ListNode<Integer> currentNode = doublyLinkedList.head;
+        while (currentNode != null) {
+            System.out.println(currentNode.value);
+            currentNode = currentNode.next;
+        }
     }
 }
