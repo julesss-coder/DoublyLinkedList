@@ -1,23 +1,3 @@
-/*
-TODOS
-- [x] append
-- [x] add(index)
-- [ ] printList
-- [ ] printListReverse
-- [ ] listLength
-- [ ] seekList(index)
-- [ ] seekListReverse(index)
-- [ ] delete(index)
-    - [ ] Decrement nodeCounter upon removing a node
-
-- [ ] Implement iterator
-- [ ] Add access modifiers to classes, fields and methods
-- [ ] Add static
-
-QUESTIONS:
-- When do I have to use `this` inside a class, and when not?
-- Should `head` and `tail` in `DoublyLinkedList` be private?
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -30,15 +10,19 @@ public class Main {
         doublyLinkedList.append(5);
         doublyLinkedList.append(6);
 
-        int listLength = doublyLinkedList.listLength();
         doublyLinkedList.add(0, 0);
+        int listLength = doublyLinkedList.listLength();
+        System.out.println("listLength: " + listLength);
+//
+        doublyLinkedList.printList();
+        doublyLinkedList.printListReverse();
 
-        // Print list
-        System.out.println("Doubly linked list: ");
-        ListNode<Integer> currentNode = doublyLinkedList.head;
-        while (currentNode != null) {
-            System.out.println(currentNode.value);
-            currentNode = currentNode.next;
-        }
+        System.out.println("Value at given index: " + doublyLinkedList.searchList(0));
+        System.out.println("Value at given index: " + doublyLinkedList.searchList(6));
+        System.out.println("Value at given index: " + doublyLinkedList.searchListReverse(0)); 
+        System.out.println("Value at given index: " + doublyLinkedList.searchListReverse(6)); 
+
+        doublyLinkedList.delete(listLength - 1);
+        doublyLinkedList.printList();
     }
 }
