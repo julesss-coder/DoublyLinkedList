@@ -135,7 +135,7 @@ public class DoublyLinkedList<T> {
         return null;
     }
 
-    public void delete(int index) {
+    public T delete(int index) {
         if (index >= nodeCounter) {
             throw new IndexOutOfBoundsException("Index is out of bounds.");
         }
@@ -145,8 +145,13 @@ public class DoublyLinkedList<T> {
         while (node != null) {
             if (currentIndex == index) {
                 if (index == 0) {
-                    this.head = node.getNext();
-                    node.getNext().setPrevious(null);
+                    if (nodeCounter == 1) {
+                        this.head = null;
+                        this.tail = null;
+                    } else {
+                        this.head = node.getNext();
+                        node.getNext().setPrevious(null);
+                    }
                 } else if (index == nodeCounter - 1) {
                     this.tail = node.getPrevious();
                     node.getPrevious().setNext(null);
@@ -157,10 +162,12 @@ public class DoublyLinkedList<T> {
                     rightNode.setPrevious(leftNode);
                 }
                 nodeCounter--;
-                return;
+                return node.getValue();
             }
             node = node.getNext();
             currentIndex++;
         }
+
+        return null;
     }
 }
